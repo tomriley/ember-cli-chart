@@ -22,17 +22,13 @@ export default class EmberChart extends Component {
 
   @action
   updateChart() {
-    let { chart, animate } = this.chart;
+    let chart = this.chart;
     let { data, options } = this.args;
 
     if (chart) {
       chart.data = data;
       chart.options = options;
-      if (animate) {
-        chart.update();
-      } else {
-        chart.update(0);
-      }
+      chart.update();
 
       if (this.customLegendElement) {
         this.customLegendElement.innerHTML = chart.generateLegend();
